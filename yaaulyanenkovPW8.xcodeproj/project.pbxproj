@@ -14,6 +14,7 @@
 		99E50AAF27D52BBC0099064D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E50AAD27D52BBC0099064D /* LaunchScreen.storyboard */; };
 		99E50AB727D53B340099064D /* UIView++Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E50AB627D53B340099064D /* UIView++Pin.swift */; };
 		99E50ABB27D53BB80099064D /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E50ABA27D53BB80099064D /* MovieView.swift */; };
+		99E50ABE27D543E20099064D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E50ABD27D543E20099064D /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		99E50AB027D52BBC0099064D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99E50AB627D53B340099064D /* UIView++Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView++Pin.swift"; sourceTree = "<group>"; };
 		99E50ABA27D53BB80099064D /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
+		99E50ABD27D543E20099064D /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 		99E50A9627D52BB90099064D = {
 			isa = PBXGroup;
 			children = (
+				99E50ABC27D543D10099064D /* Models */,
 				99E50AA127D52BB90099064D /* yaaulyanenkovPW8 */,
 				99E50AA027D52BB90099064D /* Products */,
 			);
@@ -84,6 +87,14 @@
 				99E50ABA27D53BB80099064D /* MovieView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		99E50ABC27D543D10099064D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				99E50ABD27D543E20099064D /* Movie.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +169,7 @@
 			files = (
 				99E50ABB27D53BB80099064D /* MovieView.swift in Sources */,
 				99E50AA727D52BB90099064D /* MoviesViewController.swift in Sources */,
+				99E50ABE27D543E20099064D /* Movie.swift in Sources */,
 				99E50AA327D52BB90099064D /* AppDelegate.swift in Sources */,
 				99E50AB727D53B340099064D /* UIView++Pin.swift in Sources */,
 				99E50AA527D52BB90099064D /* SceneDelegate.swift in Sources */,
