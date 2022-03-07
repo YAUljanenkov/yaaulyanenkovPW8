@@ -44,7 +44,6 @@
 		99E50A9627D52BB90099064D = {
 			isa = PBXGroup;
 			children = (
-				99E50ABC27D543D10099064D /* Models */,
 				99E50AA127D52BB90099064D /* yaaulyanenkovPW8 */,
 				99E50AA027D52BB90099064D /* Products */,
 			);
@@ -61,6 +60,7 @@
 		99E50AA127D52BB90099064D /* yaaulyanenkovPW8 */ = {
 			isa = PBXGroup;
 			children = (
+				99E50ABC27D543D10099064D /* Models */,
 				99E50AB927D53BA60099064D /* Views */,
 				99E50AB827D53B840099064D /* Controllers */,
 				99E50AB627D53B340099064D /* UIView++Pin.swift */,

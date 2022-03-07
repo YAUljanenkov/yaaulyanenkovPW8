@@ -40,7 +40,7 @@ class MoviesViewController: UIViewController {
     
     private func loadMovies() {
         guard let url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=\(apiKey)&language=ruRu") else {
-            return
+            return assertionFailure("Some problem with url")
         }
         
         let session = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, _ in
@@ -48,24 +48,44 @@ class MoviesViewController: UIViewController {
                   let dict = try? JSONSerialization.jsonObject(with: data, options: .json5Allowed) as? [String: Any],
                   let results = dict["results"] as? [[String: Any]]
             else {
-                return
+                return assertionFailure("Some problem with mapping")
             }
             let movies: [Movie] = results.map { params in
                 let title = params["title"] as? String
                 let imagePath = params["poster_path"] as? String
-                return Movie(title: title, posterPath: imagePath, poster: nil)
+                return Movie(title: title ?? "", posterPath: imagePath)
             }
-            print(movies)
+            self.movies = movies
+            self.loadImagesForMovies(movies) { movies in
+                self.movies = movies
+            }
         }
         
         session.resume()
+    }
+    
+    private func loadImagesForMovies(_ movies: [Movie], completion: @escaping ([Movie]) -> Void) {
+        let group = DispatchGroup()
+        for movie in movies {
+            group.enter()
+            DispatchQueue.global(qos: .background).async {
+                movie.loadPoster { _ in
+                    group.leave()
+                }
+            }
+        }
+        group.notify(queue: .main) {
+            completion(movies)
+        }
     }
 }
 
 
 extension MoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return MovieView()
+        let cell = tableView.dequeueReusableCell(withIdentifier: MovieView.identifier, for: indexPath) as! MovieView
+        cell.configure(movie: movies[indexPath.row])
+        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
