@@ -17,6 +17,7 @@ class SearchViewController: MoviesViewController {
         view.backgroundColor = .white
         search.searchResultsUpdater = self
         search.searchBar.placeholder = "Введите название фильма"
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,10 +37,16 @@ extension SearchViewController: UISearchResultsUpdating {
     }
     
     internal func loadMovies(query: String) {
-        guard let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&language=ruRu&query=\(query)") else {
+        var components = URLComponents(string: "https://api.themoviedb.org/3/search/movie")
+        components?.queryItems = [
+            URLQueryItem(name:"api_key", value: apiKey),
+            URLQueryItem(name:"query", value: query),
+            URLQueryItem(name:"language", value: "ru-ru"),
+        ]
+        guard let url = components?.url else {
             return
         }
-        
+        print(url)
         session?.cancel()
         session = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, _ in
             guard let data = data,
@@ -61,4 +68,15 @@ extension SearchViewController: UISearchResultsUpdating {
         
         session?.resume()
     }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.search.searchBar.endEditing(true)
+    }
 }
+
