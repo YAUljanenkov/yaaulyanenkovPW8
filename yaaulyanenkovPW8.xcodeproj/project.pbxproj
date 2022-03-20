@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9922AA1327E716FF00DBDC0E /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9922AA1227E716FF00DBDC0E /* PagingViewController.swift */; };
+		9922AA1527E728A800DBDC0E /* PaginationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9922AA1427E728A800DBDC0E /* PaginationViewController.swift */; };
 		99E50AA327D52BB90099064D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E50AA227D52BB90099064D /* AppDelegate.swift */; };
 		99E50AA527D52BB90099064D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E50AA427D52BB90099064D /* SceneDelegate.swift */; };
 		99E50AA727D52BB90099064D /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E50AA627D52BB90099064D /* MoviesViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		9922AA1227E716FF00DBDC0E /* PagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
+		9922AA1427E728A800DBDC0E /* PaginationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationViewController.swift; sourceTree = "<group>"; };
 		99E50A9F27D52BB90099064D /* yaaulyanenkovPW8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yaaulyanenkovPW8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E50AA227D52BB90099064D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99E50AA427D52BB90099064D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				99E50AA627D52BB90099064D /* MoviesViewController.swift */,
 				99E50AC127D62C5D0099064D /* SearchViewController.swift */,
 				9922AA1227E716FF00DBDC0E /* PagingViewController.swift */,
+				9922AA1427E728A800DBDC0E /* PaginationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			files = (
 				99E50ABB27D53BB80099064D /* MovieView.swift in Sources */,
 				99E50AC227D62C5D0099064D /* SearchViewController.swift in Sources */,
+				9922AA1527E728A800DBDC0E /* PaginationViewController.swift in Sources */,
 				9922AA1327E716FF00DBDC0E /* PagingViewController.swift in Sources */,
 				99E50AA727D52BB90099064D /* MoviesViewController.swift in Sources */,
 				99E50ABE27D543E20099064D /* Movie.swift in Sources */,
