@@ -8,9 +8,9 @@
 import UIKit
 
 class MoviesViewController: UIViewController {
-    private let tableView = UITableView()
-    private let apiKey = "2791350a2e73deb10f1b5d47997132f0"
-    private var movies:[Movie] = [] {
+    internal let tableView = UITableView()
+    internal let apiKey = "2791350a2e73deb10f1b5d47997132f0"
+    internal var movies:[Movie] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -23,13 +23,19 @@ class MoviesViewController: UIViewController {
         view.backgroundColor = .white
         configureUI()
         
-        DispatchQueue.global(qos: .background).async { [weak self] in
-            self?.loadMovies()
+        if type(of: self) == MoviesViewController.self {
+            DispatchQueue.global(qos: .background).async { [weak self] in
+                self?.loadMovies()
+            }
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tabBarController?.title = "Movies list"
+        tabBarController?.navigationItem.searchController = nil
+    }
     
-    private func configureUI() {
+    internal func configureUI() {
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.register(MovieView.self, forCellReuseIdentifier: MovieView.identifier)
@@ -38,7 +44,7 @@ class MoviesViewController: UIViewController {
         tableView.reloadData()
     }
     
-    private func loadMovies() {
+    internal func loadMovies() {
         guard let url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=\(apiKey)&language=ruRu") else {
             return assertionFailure("Some problem with url")
         }
@@ -64,7 +70,7 @@ class MoviesViewController: UIViewController {
         session.resume()
     }
     
-    private func loadImagesForMovies(_ movies: [Movie], completion: @escaping ([Movie]) -> Void) {
+    func loadImagesForMovies(_ movies: [Movie], completion: @escaping ([Movie]) -> Void) {
         let group = DispatchGroup()
         for movie in movies {
             group.enter()
